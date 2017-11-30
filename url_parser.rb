@@ -6,6 +6,7 @@ class UrlParser
 
   def scheme
     @url.split('://')[0]
+    @scheme = @url.split('://')[0]
   end
 
   def domain
@@ -17,19 +18,38 @@ class UrlParser
   end
 
   def port
+    prt = ""
+
     if @after_scheme.include? ":"
       prt = @after_scheme.split(':')[1]
+      if prt.include? "/"
+        prt = prt.split('/')[0]
+      end
+    elsif @scheme == "http"
+      prt = 80
+      
     end
-    if prt.include? "/"
-      prt = prt.split('/')[0]
-    end
+
+    # if @scheme == "http" && prt == ""
+    #   prt = 80
+    # end
+
+    # if prt.include? "/"
+      # prt = prt.split('/')[0]
+    # end
+
+    # if @after_scheme.!include? prt
+      # return 80
+    # end
   end
 
   def path
     if @after_scheme.include? '?'
       pth = @after_scheme.split('?')[0]
     end
-    pth.split('/')[1]
+    if pth.include? ('/')
+      pth.split('/')[1]
+    end
   end
 
   def query_string
@@ -55,6 +75,7 @@ class UrlParser
   end
 end
 
-@url = UrlParser.new('http://www.google.com:60/search?q=cat&name=Tim#img=FunnyCat')
+@url = UrlParser.new('http://www.google.com/search?q=cat&name=Tim#img=FunnyCat')
+# @url = UrlParser.new('http://www.google.com:60/search?q=cat&name=Tim#img=FunnyCat')
 
-p @url
+ p @url
