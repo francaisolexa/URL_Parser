@@ -25,9 +25,10 @@ class UrlParser
       if prt.include? "/"
         prt = prt.split('/')[0]
       end
-    elsif @scheme == "http"
-      prt = 80
-      
+    elsif scheme == "http"
+      "80"
+    # else scheme == "https"
+    #   "443"
     end
 
     # if @scheme == "http" && prt == ""
@@ -78,4 +79,4 @@ end
 @url = UrlParser.new('http://www.google.com/search?q=cat&name=Tim#img=FunnyCat')
 # @url = UrlParser.new('http://www.google.com:60/search?q=cat&name=Tim#img=FunnyCat')
 
- p @url
+ # p @url
