@@ -27,21 +27,9 @@ class UrlParser
       end
     elsif scheme == "http"
       "80"
-    # else scheme == "https"
-    #   "443"
+    else scheme == "https"
+      "443"
     end
-
-    # if @scheme == "http" && prt == ""
-    #   prt = 80
-    # end
-
-    # if prt.include? "/"
-      # prt = prt.split('/')[0]
-    # end
-
-    # if @after_scheme.!include? prt
-      # return 80
-    # end
   end
 
   def path
