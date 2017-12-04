@@ -63,8 +63,3 @@ class UrlParser
     @url.split('#').last
   end
 end
-
-@url = UrlParser.new('http://www.google.com/search?q=cat&name=Tim#img=FunnyCat')
-# @url = UrlParser.new('http://www.google.com:60/search?q=cat&name=Tim#img=FunnyCat')
-
- # p @url
